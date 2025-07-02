@@ -55,34 +55,45 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
 
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+        child: Container(
+          color: Colors.red,
 
-          children: [
-            Container(
-              height: 100,
-              width: 100,
-              padding: EdgeInsets.all(10),
-              margin: EdgeInsets.all(10),
-              decoration: BoxDecoration(
-                color: Colors.blue,
-                borderRadius: BorderRadius.circular(16.5),
-              ),
-              child: Text('Hello World', style: TextStyle(color: Colors.white)),
-            ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
 
-            Container(
-              height: 100,
-              width: 100,
-              padding: EdgeInsets.all(10),
-              margin: EdgeInsets.all(10),
-              decoration: BoxDecoration(
-                color: Colors.green,
-                borderRadius: BorderRadius.circular(16.5),
+            children: [
+              Container(
+                height: 100,
+                width: 100,
+                padding: EdgeInsets.all(10),
+                margin: EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                  color: Colors.blue,
+                  borderRadius: BorderRadius.circular(16.5),
+                ),
+                child: Text(
+                  'Hello World',
+                  style: TextStyle(color: Colors.white),
+                ),
               ),
-              child: Text('Hello World', style: TextStyle(color: Colors.white)),
-            ),
-          ],
+
+              Container(
+                height: 100,
+                width: 100,
+                padding: EdgeInsets.all(10),
+                margin: EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                  color: Colors.green,
+                  borderRadius: BorderRadius.circular(16.5),
+                ),
+                child: Text(
+                  'Hello World 2',
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
 
