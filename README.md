@@ -54,10 +54,14 @@ flutter run -d macos
     debug painting p
 -->
 
+# run iphone 16 emu
+```
+flutter run -d DDE71501-B973-494D-BD52-F3B200D45CC4
+```
 
 
 # The Ultimate Flutter Tutorial for Beginners - 2025 Full Course
 
 ```
-https://youtu.be/3kaGC_DrUnw?si=sx3Cn_C9ylhChHvG&t=1271
+https://youtu.be/3kaGC_DrUnw?si=-zxGViOmTKa5jCMT&t=3234
 ```
