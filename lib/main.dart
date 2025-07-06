@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const MyApp()); // Точка входа: запускаем приложение
 }
 
 // Stateless
@@ -10,37 +10,40 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Material app
+    // Основной виджет приложения
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
+      debugShowCheckedModeBanner: false, // Убираем баннер "Debug"
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(
-          seedColor: Colors.teal, 
-          brightness: Brightness.dark)
+          seedColor: Colors.teal,
+          brightness: Brightness.dark,
         ),
-      // Scaffold
+      ),
+      // Главная страница приложения
       home: Scaffold(
+        // Верхняя панель (AppBar)
         appBar: AppBar(
-          title: Text('Flutter'),
-          centerTitle: false,
-          leading: Icon(Icons.login),
-          actions: [
-            Text('Action #1'),
-            Text('Action #2'),
-            Text('Action #3'),
-          ],
-          backgroundColor: Colors.teal,
+          title: Container(
+            height: 25,
+            child: Text('Flutter Mapp', style: TextStyle(color: Colors.red)),
+          ),
+          centerTitle: true, // Центрируем заголовок
+          // backgroundColor: Colors.teal, // Можно задать цвет фона AppBar
         ),
 
-        bottomNavigationBar:  NavigationBar(
+        // Нижняя панель навигации (NavigationBar)
+        bottomNavigationBar: NavigationBar(
           destinations: [
-            NavigationDestination(icon: Icon(Icons.abc), label: 'ABC'),
-            NavigationDestination(icon: Icon(Icons.account_balance_outlined), label: 'Account'),
+            // Первый пункт меню — "Home"
+            NavigationDestination(icon: Icon(Icons.home), label: 'Home'),
+            // Второй пункт меню — "Profile"
+            NavigationDestination(icon: Icon(Icons.person), label: 'Profile'),
           ],
-          selectedIndex: 1,
+          selectedIndex: 0, // Индекс выбранной вкладки
           onDestinationSelected: (value) {
+            // Обработка выбора вкладки
             print(value);
-          }
+          },
         ),
       ),
     );
