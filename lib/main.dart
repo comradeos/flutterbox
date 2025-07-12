@@ -1,51 +1,34 @@
 import 'package:flutter/material.dart';
+import 'package:flutterbox/views/widget_tree.dart';
 
 void main() {
-  runApp(const MyApp()); // Точка входа: запускаем приложение
+  runApp(const MyApp());
 }
 
-// Stateless
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  String appTitle = 'My App';
+ 
+  bool dark = false;
 
   @override
   Widget build(BuildContext context) {
-    // Основной виджет приложения
     return MaterialApp(
-      debugShowCheckedModeBanner: false, // Убираем баннер "Debug"
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(
-          seedColor: Colors.teal,
-          brightness: Brightness.dark,
+          seedColor: Colors.tealAccent, 
+          brightness: dark == true 
+            ? Brightness.dark 
+            : Brightness.light
         ),
       ),
-      // Главная страница приложения
-      home: Scaffold(
-        // Верхняя панель (AppBar)
-        appBar: AppBar(
-          title: Container(
-            height: 25,
-            child: Text('Flutter Mapp', style: TextStyle(color: Colors.red)),
-          ),
-          centerTitle: true, // Центрируем заголовок
-          // backgroundColor: Colors.teal, // Можно задать цвет фона AppBar
-        ),
-
-        // Нижняя панель навигации (NavigationBar)
-        bottomNavigationBar: NavigationBar(
-          destinations: [
-            // Первый пункт меню — "Home"
-            NavigationDestination(icon: Icon(Icons.home), label: 'Home'),
-            // Второй пункт меню — "Profile"
-            NavigationDestination(icon: Icon(Icons.person), label: 'Profile'),
-          ],
-          selectedIndex: 0, // Индекс выбранной вкладки
-          onDestinationSelected: (value) {
-            // Обработка выбора вкладки
-            print(value);
-          },
-        ),
-      ),
+      home: WidgetTree()
     );
   }
 }
