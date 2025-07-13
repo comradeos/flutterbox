@@ -1,36 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:flutterbox/views/data/notifiers.dart';
+import '../data/app_state.dart';
 
-class NavbarWidget extends StatefulWidget {
+class NavbarWidget extends StatelessWidget {
   const NavbarWidget({super.key});
 
   @override
-  State<NavbarWidget> createState() => _NavbarWidgetState();
-}
-
-class _NavbarWidgetState extends State<NavbarWidget> {
-   int selectedIndex = 0;
-   
-  @override
   Widget build(BuildContext context) {
-    return ValueListenableBuilder(
-      valueListenable: selectedPageNotifier, 
-      builder: (context, selectedPage, child) {
+    return AnimatedBuilder(
+      animation: appState,
+      builder: (context, _) {
         return NavigationBar(
-            destinations: [
-              NavigationDestination(icon: Icon(Icons.light_mode), label: 'Light'),
-              NavigationDestination(icon: Icon(Icons.dark_mode), label: 'Dark'),
-              NavigationDestination(icon: Icon(Icons.home), label: 'Home'),
-              NavigationDestination(icon: Icon(Icons.person), label: 'Profile'),
-            ],
-
-            onDestinationSelected: (int value) {
-            },
-
-            selectedIndex: selectedPage,
-          );
-      }
+          destinations: const [
+            NavigationDestination(icon: Icon(Icons.light_mode), label: 'Light'),
+            NavigationDestination(icon: Icon(Icons.dark_mode), label: 'Dark'),
+            NavigationDestination(icon: Icon(Icons.home), label: 'Home'),
+            NavigationDestination(icon: Icon(Icons.person), label: 'Profile'),
+          ],
+          selectedIndex: appState.navbarIndex,
+          onDestinationSelected: (int value) {
+            appState.setNavbarIndex(value); // обновляем глобальное состояние
+          },
+        );
+      },
     );
   }
 }
-
