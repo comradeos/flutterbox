@@ -1,18 +1,41 @@
-import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 
-class AppState extends ChangeNotifier {
-  int navbarIndex = 0;
-  String username = 'Guest';
+// Состояние приложения
+class Person {
+  final ValueNotifier<int> age;
+  final ValueNotifier<String> name;
 
-  void setNavbarIndex(int value) {
-    navbarIndex = value;
-    notifyListeners();
-  }
-
-  void setUsername(String value) {
-    username = value;
-    notifyListeners();
-  }
+  Person({
+    int initialAge = 0,
+    String initialName = 'John',
+  }) :
+  age = ValueNotifier<int>(initialAge),
+  name = ValueNotifier<String>(initialName);
 }
 
-final appState = AppState();
+class AppState {
+  static final ValueNotifier<int> navigationIndex = ValueNotifier<int>(0);
+  static final ValueNotifier<String> anotherValue = ValueNotifier<String>('Hello');
+  static final ValueNotifier<Person> person = ValueNotifier<Person>(Person());
+}
+
+// Виджет для подписки на изменения ValueNotifier
+class WatchValue<T> extends StatelessWidget {
+  final ValueNotifier<T> listenable;
+  final Widget Function(T value) builder;
+
+  const WatchValue({
+    super.key,
+    required this.listenable,
+    required this.builder,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ValueListenableBuilder<T>(
+      valueListenable: listenable,
+      builder: (context, value, _) => builder(value),
+    );
+  }
+}
+// Виджет для подписки на изменения ValueNotifier

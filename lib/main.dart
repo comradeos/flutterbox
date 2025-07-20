@@ -1,34 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:flutterbox/views/widget_tree.dart';
+import 'views/widgets/navigation_bar_widget.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const App());
 }
 
-class MyApp extends StatefulWidget {
-  const MyApp({super.key});
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  String appTitle = 'My App';
- 
-  bool dark = false;
+class App extends StatelessWidget {
+  const App({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: Colors.tealAccent, 
-          brightness: dark == true 
-            ? Brightness.dark 
-            : Brightness.light
-        ),
+        brightness: Brightness.light,
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
       ),
-      home: WidgetTree()
+      home: Scaffold(
+        appBar: AppBar(title: const Text('App')),
+        bottomNavigationBar: const AppNavigationBar(),
+      ),
     );
   }
 }

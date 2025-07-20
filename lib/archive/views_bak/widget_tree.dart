@@ -8,6 +8,8 @@ List<Widget> pages = [
   ProfilePage(),
 ];
 
+String title = 'Flutter Mapp';  // как єто раотает?
+
 class WidgetTree extends StatelessWidget {
   const WidgetTree({super.key});
 
@@ -15,7 +17,7 @@ class WidgetTree extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Flutter Mapp'),
+        title: Text(title), // как єто раотает?
       ),
       body: pages.elementAt(0),
       bottomNavigationBar: NavbarWidget(),
